@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservation - Philippine Paradise</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Additional reservation page styles */
+    .reservation-hero {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&auto=format&fit=crop&q=80&ixlib=rb-4.0.3');
+      height: 60vh;
+      min-height: 300px;
+    }
+
+    .reservation-container {
+      margin-top: -100px;
+      margin-bottom: 80px;
+    }
+
+    .map-container {
+      border-radius: 10px 10px 0 0;
+      overflow: hidden;
+      height: 350px;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .reservation-form-container {
+      background-color: #f9f9f9;
+      padding: 40px;
+      border-radius: 0 0 10px 10px;
+    }
+
+    .reservation-form-container h4 {
+      text-align: center;
+      font-size: 28px;
+      margin-bottom: 30px;
+      color: #2a2a2a;
+    }
+
+    .reservation-form-container h4 em {
+      font-style: normal;
+      color: #26c0d3;
+    }
+
+    .form-row {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -15px;
+    }
+
+    .form-col {
+      flex: 1 0 50%;
+      padding: 0 15px;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 15px;
+      color: #777;
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 23px;
+      background-color: transparent;
+    }
+
+    .form-group textarea {
+      height: 120px;
+      resize: none;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      background-color: #26c0d3;
+      color: #fff;
+      border: 1px solid #26c0d3;
+      border-radius: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .submit-btn:hover {
+      background-color: transparent;
+      color: #26c0d3;
+    }
+
+    @media (max-width: 768px) {
+      .form-col {
+        flex: 1 0 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+          <img src="img/Untitled (161 x 40 px).png" alt="Tourista - Journey Simplified" class="logo-img">
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="deals.html">Deals</a></li>
+            <li class="active"><a href="reservation.html">Reservation</a></li> <!-- Added active class -->
+            <li><a href="login.html">Login</a></li>
+            <li><a href="#book" class="highlight">Book Yours</a></li> <!-- Added highlight class -->
+          </ul>
+        </nav>
+      </header>
+  <section class="hero reservation-hero">
+    <div class="hero-content">
+      <h4>Make Your Reservation</h4>
+      <h1>Book Your Paradise Stay</h1>
+    </div>
+  </section>
+
+  <section class="reservation-container">
+    <div class="container">
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3920.2212644892373!2d118.74745!3d10.72863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33b64a5a514d3931%3A0xcf027b9d3e35fa4c!2sEl%20Nido%2C%20Palawan%2C%20Philippines!5e0!3m2!1sen!2sus!4v1637064109507!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+
+      <div class="reservation-form-container">
+        <h4>Make Your <em>Reservation</em> Through This <em>Form</em></h4>
+        <form id="reservation-form">
+          <div class="form-row">
+            <div class="form-col">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Ex. Juan Dela Cruz" required>
+              </div>
+            </div>
+            <div class="form-col">
+              <div class="form-group">
+                <label for="phone">Your Phone Number</label>
+                <input type="text" id="phone" name="phone" placeholder="Ex. +63 915 123 4567" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-col">
+              <div class="form-group">
+                <label for="guests">Number of Guests</label>
+                <select id="guests" name="guests" required>
+                  <option value="" disabled selected>How many people?</option>
+                  <option value="1">1 Person</option>
+                  <option value="2">2 People</option>
+                  <option value="3">3 People</option>
+                  <option value="4">4 People</option>
+                  <option value="5">5 People</option>
+                  <option value="6+">6+ People</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-col">
+              <div class="form-group">
+                <label for="accommodation">Accommodation Type</label>
+                <select id="accommodation" name="accommodation" required>
+                  <option value="" disabled selected>Which accommodation?</option>
+                  <option value="Deluxe">Deluxe Water Villa (₱12,500/night)</option>
+                  <option value="Garden">Tropical Garden Villa (₱8,500/night)</option>
+                  <option value="Beachfront">Premium Beachfront Suite (₱18,000/night)</option>
+                  <option value="Standard">Standard Room (₱5,000/night)</option>
+                  <option value="Family">Family Bungalow (₱15,000/night)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-col">
+              <div class="form-group">
+                <label for="checkin">Check-in Date</label>
+                <input type="date" id="checkin" name="checkin" required>
+              </div>
+            </div>
+            <div class="form-col">
+              <div class="form-group">
+                <label for="checkout">Check-out Date</label>
+                <input type="date" id="checkout" name="checkout" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Special Requirements</label>
+            <textarea id="message" name="message" placeholder="Tell us about any special requirements or requests"></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Make Your Reservation Now</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="call-to-action">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Enjoy Your Vacation With Us</h2>
+        <h4>Make Memories That Last a Lifetime</h4>
+        <a href="deals.html" class="btn-secondary">View Special Offers</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Tourista</h3>
+        <p>Odiong Roxas Oriental Mindoro</p>
+        <p>Contact: +63 (2) 8888-7777</p>
+        <p>Email: Tourista@gmail.com
+      </div>
+
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="deals.html">Deals</a></li>
+          <li><a href="reservation.html">Reservation</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="#">Book Yours</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Connect With Us</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Tourista. All Rights Reserved.</p>
+      <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

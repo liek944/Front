@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Philippine Paradise - Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: #000;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1600&auto=format&fit=crop&q=80&ixlib=rb-4.0.3');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    .login-container {
+      background-color: rgba(38, 192, 211, 0.9);
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      width: 400px;
+      padding: 40px;
+      text-align: center;
+      color: white;
+    }
+    
+    .logo-img {
+      max-width: 200px;
+      margin-bottom: 30px;
+    }
+    
+    h2 {
+      font-size: 24px;
+      margin-bottom: 30px;
+      color: white;
+    }
+    
+    .input-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: white;
+    }
+    
+    .input-group input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: border-color 0.3s;
+    }
+    
+    .input-group input:focus {
+      border-color: #26c0d3;
+      outline: none;
+    }
+    
+    .remember-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .remember-group input {
+      margin-right: 10px;
+    }
+    
+    .btn {
+      background-color: #1a8e9c;
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .btn:hover {
+      background-color: #156c77;
+    }
+    
+    .forgot-password {
+      display: block;
+      margin-top: 15px;
+      color: white;
+      text-decoration: none;
+    }
+    
+    .register-link {
+      margin-top: 25px;
+      color: white;
+    }
+    
+    .register-link a {
+      color: #fff;
+      text-decoration: underline;
+      font-weight: 500;
+    }
+    
+    .social-login {
+      margin-top: 25px;
+      position: relative;
+    }
+    
+    .social-login:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.3);
+      z-index: 1;
+    }
+    
+    .social-login span {
+      display: inline-block;
+      padding: 0 15px;
+      background-color: rgba(38, 192, 211, 0.9);
+      position: relative;
+      z-index: 2;
+      color: white;
+    }
+    
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+    }
+    
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin: 0 10px;
+      background-color: #f5f6fa;
+      color: #333;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    .social-icons a:hover {
+      background-color: #1a8e9c;
+      color: white;
+    }
+
+    .back-link {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+    }
+
+    .back-link i {
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back-link">
+    <i class="fas fa-arrow-left"></i> Back to Home
+  </a>
+  
+  <div class="login-container">
+    <img src="img/Untitled (161 x 40 px).png" alt="Philippine Paradise" class="logo-img">
+    <h2>Welcome Back to Paradise</h2>
+    
+    <form action="#" method="post">
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your email" required>
+      </div>
+      
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Your password" required>
+      </div>
+      
+      <div class="remember-group">
+        <input type="checkbox" id="remember" name="remember">
+        <label for="remember">Remember me</label>
+      </div>
+      
+      <button type="submit" class="btn">Login</button>
+      
+      <a href="#" class="forgot-password">Forgot password?</a>
+    </form>
+    
+    <div class="register-link">
+      Don't have an account? <a href="#">Register now</a>
+    </div>
+    
+    <div class="social-login">
+      <span>Or login with</span>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-google"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

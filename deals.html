@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deals - Philippine Paradise</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Additional deals page styles */
+    .deals-hero {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&auto=format&fit=crop&q=80&ixlib=rb-4.0.3');
+    }
+
+    .deals-section {
+      padding: 80px 0;
+    }
+
+    .filter-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .filter-group label {
+      font-weight: 500;
+      color: #555;
+    }
+
+    .filter-dropdown {
+      padding: 8px 15px;
+      border: 1px solid #e0e0e0;
+      border-radius: 5px;
+      min-width: 150px;
+    }
+
+    .search-input {
+      display: flex;
+      max-width: 300px;
+    }
+
+    .search-input input {
+      flex: 1;
+      padding: 8px 15px;
+      border: 1px solid #e0e0e0;
+      border-radius: 5px 0 0 5px;
+      border-right: none;
+    }
+
+    .search-input button {
+      padding: 8px 15px;
+      background-color: #26c0d3;
+      color: #fff;
+      border: 1px solid #26c0d3;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+    }
+
+    .deals-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .deal-item {
+      display: flex;
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .deal-image {
+      flex: 0 0 40%;
+      position: relative;
+    }
+
+    .deal-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .deal-price {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #26c0d3;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .deal-content {
+      flex: 1;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .deal-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+
+    .deal-title h3 {
+      font-size: 24px;
+      color: #2a2a2a;
+    }
+
+    .deal-rating {
+      color: #ffb33e;
+    }
+
+    .deal-location {
+      color: #777;
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .deal-location i {
+      margin-right: 5px;
+      color: #26c0d3;
+    }
+
+    .deal-description {
+      margin-bottom: 20px;
+      flex: 1;
+    }
+
+    .deal-features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+      padding-top: 15px;
+      border-top: 1px solid #f1f1f1;
+    }
+
+    .deal-features li {
+      display: flex;
+      align-items: center;
+    }
+
+    .deal-features li i {
+      color: #26c0d3;
+      margin-right: 10px;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 50px;
+    }
+
+    .pagination ul {
+      display: flex;
+      gap: 5px;
+    }
+
+    .pagination li a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 5px;
+      background-color: #fff;
+      color: #555;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .pagination li.active a,
+    .pagination li a:hover {
+      background-color: #26c0d3;
+      color: #fff;
+    }
+
+    @media (max-width: 992px) {
+      .filter-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .search-input {
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .deal-item {
+        flex-direction: column;
+      }
+
+      .deal-image {
+        flex: 0 0 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+          <img src="img/Untitled (161 x 40 px).png" alt="Tourista - Journey Simplified" class="logo-img">
+        </div>
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li class="active"><a href="deals.html">Deals</a></li> <!-- Added active class -->
+            <li><a href="reservation.html">Reservation</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="#book" class="highlight">Book Yours</a></li> <!-- Added highlight class -->
+          </ul>
+        </nav>
+      </header>
+
+  <section class="hero deals-hero">
+    <div class="hero-content">
+      <h4>Amazing deals for you</h4>
+      <h1>Special Offers</h1>
+    </div>
+  </section>
+
+  <section class="deals-section">
+    <div class="container">
+      <div class="filter-row">
+        <div class="filter-group">
+          <label for="destination">Destination:</label>
+          <select id="destination" class="filter-dropdown">
+            <option value="all">All Destinations</option>
+            <option value="palawan">Tamaraw Falls</option>
+            <option value="boracay">Talipanan Beach</option>
+            <option value="cebu">Aninuan Beach</option>
+            <option value="bohol">Mt. Malasimbo</option>
+            <option value="siargao">Mangyan Village</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="price">Price Range:</label>
+          <select id="price" class="filter-dropdown">
+            <option value="all">All Prices</option>
+            <option value="0-5000">₱0 - ₱5,000</option>
+            <option value="5000-10000">₱5,000 - ₱10,000</option>
+            <option value="10000-15000">₱10,000 - ₱15,000</option>
+            <option value="15000+">₱15,000+</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="rating">Rating:</label>
+          <select id="rating" class="filter-dropdown">
+            <option value="all">All Ratings</option>
+            <option value="5">5 Stars</option>
+            <option value="4">4+ Stars</option>
+            <option value="3">3+ Stars</option>
+          </select>
+        </div>
+
+        <div class="search-input">
+          <input type="text" placeholder="Search accommodations...">
+          <button type="button"><i class="fas fa-search"></i></button>
+        </div>
+      </div>
+
+      <div class="deals-list">
+        <div class="deal-item">
+          <div class="deal-image">
+            <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&auto=format&fit=crop&q=80&ixlib=rb-4.0.3" alt="El Nido Resort">
+            <div class="deal-price">₱12,500</div>
+          </div>
+          <div class="deal-content">
+            <div class="deal-title">
+              <h3>Casa Gracia</h3>
+              <div class="deal-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+            <div class="deal-location">
+              <i class="fas fa-map-marker-alt"></i> Roxas
+            </div>
+            <div class="deal-description">
+              <p>Experience luxury at its finest in our Deluxe Water Villa. Perched above crystal-clear waters, this accommodation offers panoramic ocean views, direct access to the sea, and the utmost privacy for a truly unforgettable stay.</p>
+            </div>
+            <ul class="deal-features">
+              <li><i class="fas fa-bed"></i> King Size Bed</li>
+              <li><i class="fas fa-utensils"></i> Fine Dining</li>
+              <li><i class="fas fa-swimming-pool"></i> Private Plunge Pool</li>
+              <li><i class="fas fa-ship"></i> Island Hopping</li>
+            </ul>
+            <a href="reservation.html" class="btn-primary">Make a Reservation</a>
+          </div>
+        </div>
+
+        <div class="deal-item">
+          <div class="deal-image">
+            <img src="https://images.unsplash.com/photo-1571401835393-8c5f35328320?w=800&auto=format&fit=crop&q=80&ixlib=rb-4.0.3" alt="Garden Villa">
+            <div class="deal-price">₱8,500</div>
+          </div>
+          <div class="deal-content">
+            <div class="deal-title">
+              <h3>Tropical Garden Villa</h3>
+              <div class="deal-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+            </div>
+            <div class="deal-location">
+              <i class="fas fa-map-marker-alt"></i> Oriental Mindoro Roxas, Philippines
+            </div>
+            <div class="deal-description">
+              <p>Our Tropical Garden Villa offers a serene escape surrounded by lush gardens and exotic flora. Featuring a spacious terrace, outdoor shower, and modern amenities, it's the perfect blend of luxury and nature for your island getaway.</p>
+            </div>
+            <ul class="deal-features">
+              <li><i class="fas fa-spa"></i> Outdoor Spa</li>
+              <li><i class="fas fa-cocktail"></i> Welcome Drinks</li>
+              <li><i class="fas fa-water"></i> Water Sports</li>
+              <li><i class="fas fa-umbrella-beach"></i> Beach Access</li>
+            </ul>
+            <a href="reservation.html" class="btn-primary">Make a Reservation</a>
+          </div>
+        </div>
+
+        <div class="deal-item">
+          <div class="deal-image">
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&auto=format&fit=crop&q=80&ixlib=rb-4.0.3" alt="Beachfront Suite">
+            <div class="deal-price">₱18,000</div>
+          </div>
+          <div class="deal-content">
+            <div class="deal-title">
+              <h3>Premium Beachfront Suite</h3>
+              <div class="deal-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+            </div>
+            <div class="deal-location">
+              <i class="fas fa-map-marker-alt"></i> Roxas Oriental Mindoro, Philippines
+            </div>
+            <div class="deal-description">
+              <p>The Premium Beachfront Suite is our most exclusive accommodation, offering direct access to pristine white sand beaches. With a spacious living area, luxury bathroom with jacuzzi, and personalized butler service, it delivers the ultimate Philippine Paradise experience.</p>
+            </div>
+            <ul class="deal-features">
+              <li><i class="fas fa-house"></i> 120 sqm Suite</li>
+              <li><i class="fas fa-user-tie"></i> Butler Service</li>
+              <li><i class="fas fa-fish"></i> Diving Experience</li>
+              <li><i class="fas fa-spa"></i> Daily Spa Treatment</li>
+            </ul>
+            <a href="reservation.html" class="btn-primary">Make a Reservation</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pagination">
+        <ul>
+          <li><a href="#"><i class="fas fa-angle-left"></i></a></li>
+          <li class="active"><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#"><i class="fas fa-angle-right"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="call-to-action">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready For Your Tropical Getaway?</h2>
+        <h4>Make A Reservation Today</h4>
+        <a href="reservation.html" class="btn-secondary">Book Yours Now</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Tourista</h3>
+        <p>Odiong Roxas Oriental Mindoro</p>
+        <p>Contact: +63 (2) 8888-7777</p>
+        <p>Email: Tourista@gmail.com
+
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="deals.html">Deals</a></li>
+          <li><a href="reservation.html">Reservation</a></li>
+          <li><a href="#book">Book Yours</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Connect With Us</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2025 Tourista. All Rights Reserved.</p>
+      <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
